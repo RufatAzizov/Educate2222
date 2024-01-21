@@ -1,0 +1,52 @@
+﻿ 
+@model List<SliderListItemVm>
+@{
+    ViewData["Title"] = "Index";
+}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+    
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <br/>
+            <a asp-action="Create" class="btn btn-success">Create</a>
+            <br />
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered"  width="100%">
+                    <thead>
+                       
+                        <tr>
+                            <th>Profession</th>
+                            <th>ImageUrl</th>
+                            <th>Instructor</th>
+                            <th class="text-center" colspan="2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Profession</td>
+
+                                <td style="width:13%"><img style="width:90%" src="~/Assets/images/stories/@item.ImageUrl" /></td>
+                                <td>@item.Instructor</td>
+                                <td class="text-center"><a asp-action="Update" class="btn btn-outline-info" asp-route-id="@item.Id">Update</a></td>
+                                <td class="text-center"> <a asp-action="Delete" class="btn btn-outline-danger" asp-route-id="@item.Id">Delete</a></td>
+                            </tr>
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
